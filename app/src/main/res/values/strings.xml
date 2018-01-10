@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">NavigationDrawer</string>
+    <string name="str_name_user">Pepe</string>
+    <string name="str_user_email">pepe@hotmail.com</string>
+    <string name="str_home">Home</string>
+    <string name="str_otras_opciones">Otras opciones</string>
+    <string name="action_helper">Ayuda</string>
+    <string name="action_configuration">Configuración</string>
+</resources>
