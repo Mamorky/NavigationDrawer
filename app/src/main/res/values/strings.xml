@@ -6,4 +6,6 @@
     <string name="str_otras_opciones">Otras opciones</string>
     <string name="action_helper">Ayuda</string>
     <string name="action_configuration">Configuración</string>
+    <string name="hello_blank_fragment_one">fragment1</string>
+    <string name="hello_blank_fragment_two">fragment2</string>
 </resources>
