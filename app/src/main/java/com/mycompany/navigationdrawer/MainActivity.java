@@ -1,7 +1,11 @@
 package com.mycompany.navigationdrawer;
 
+import android.app.Fragment;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -10,9 +14,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.app.FragmentTransaction;
 
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements FragmentOne.OnFragmentInteractionListener,FragmentTwo.OnFragmentInteractionListener{
 
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
@@ -23,8 +28,8 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
         toolbar = findViewById(R.id.toolbar);
-        drawerLayout = findViewById(R.id.drawerLayout);
-        navView = findViewById(R.id.navView);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navView = findViewById(R.id.nav_view);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_home);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -37,11 +42,15 @@ public class MainActivity extends AppCompatActivity{
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.action_home:
-                        Log.d("NavigationDrawer","Se ha pulsado la opcion Home");
+                        loadFragmentOne();
                     case R.id.action_dependency:
-                        Log.d("NavigationDrawer","Se ha pulsado la opcion Dependency");
+                        loadFragmentTwo();
                     case R.id.action_sector:
                         Log.d("NavigationDrawer","Se ha pulsado la opcion Sector");
+                    case R.id.action_help:
+                        Intent intent = new Intent(getApplicationContext(),GeneralSettingActivity.class);
+                        startActivity(intent);
+                        break;
                 }
                 item.setChecked(true);
                 getSupportActionBar().setTitle(item.getTitle());
@@ -66,5 +75,29 @@ public class MainActivity extends AppCompatActivity{
             drawerLayout.closeDrawer(GravityCompat.START);
         else
             super.onBackPressed();
+    }
+
+    public void loadFragmentOne(){
+        FragmentOne fragment = new FragmentOne();
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_container,fragment);
+        ft.commit();
+    }
+
+    public void loadFragmentTwo(){
+        FragmentTwo fragment = new FragmentTwo();
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_container,fragment);
+        ft.commit();
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }

@@ -8,4 +8,10 @@
     <string name="action_configuration">Configuración</string>
     <string name="hello_blank_fragment_one">fragment1</string>
     <string name="hello_blank_fragment_two">fragment2</string>
+    <string name="pref_title_showIcon">description</string>
+    <string name="pref_description_showIcon">Description Icon</string>
+    <string name="pref_summary_numcolumn">Num Columnas</string>
+    <string name="pref_title_numcolumn">numero columnas</string>
+    <string name="pref_title_aboutUs">aboutPref</string>
+    <string name="pref_category_general">generalpref</string>
 </resources>
